@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://ddid5vounvpsk"]
+
+[ext_resource type="Script" uid="uid://bd73vovopsj14" path="res://Scenes/Unit/unit.gd" id="1_15sed"]
+[ext_resource type="Texture2D" uid="uid://db71ophumcoqc" path="res://Assets/Seth - 32rogues/rogues.png" id="1_hgpyh"]
+[ext_resource type="Resource" uid="uid://duj2clcilclm2" path="res://Data/Units/jonathan.tres" id="2_ladk0"]
+[ext_resource type="Shader" uid="uid://dfl2b4b1uotte" path="res://Shaders/2d_outline.gdshader" id="3_jbdwb"]
+[ext_resource type="Script" uid="uid://6a22bdg6gbab" path="res://Components/drag_and_drop.gd" id="4_iuf4a"]
+[ext_resource type="Script" uid="uid://cvvibncp23kdx" path="res://Components/velocity_based_rotation.gd" id="5_ulevp"]
+[ext_resource type="Script" uid="uid://cf4jwlo8cx5un" path="res://Components/outline_highlighter.gd" id="7_kakeo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbdwb"]
+resource_local_to_scene = true
+shader = ExtResource("3_jbdwb")
+shader_parameter/line_colour = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgpyh"]
+size = Vector2(36, 36)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15sed"]
+bg_color = Color(0.28260207, 0, 0.05098097, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ladk0"]
+bg_color = Color(0, 0.72281444, 0.24474221, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28260207, 0, 0.05098097, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuf4a"]
+bg_color = Color(0.28260207, 0, 0.05098097, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulevp"]
+bg_color = Color(0.16732317, 0.5758766, 0.9049567, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28260207, 0, 0.05098097, 1)
+
+[node name="Unit" type="Area2D" groups=["units"]]
+script = ExtResource("1_15sed")
+stats = ExtResource("2_ladk0")
+metadata/_edit_group_ = true
+
+[node name="Visuals" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_jbdwb")
+
+[node name="Skin" type="Sprite2D" parent="Visuals"]
+position = Vector2(16, 8)
+texture = ExtResource("1_hgpyh")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 8)
+shape = SubResource("RectangleShape2D_hgpyh")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 99
+offset_left = 1.0
+offset_top = -20.0
+offset_right = 31.0
+offset_bottom = -14.0
+theme_override_styles/background = SubResource("StyleBoxFlat_15sed")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ladk0")
+value = 50.0
+show_percentage = false
+
+[node name="ManaBar" type="ProgressBar" parent="."]
+z_index = 99
+offset_left = 1.0
+offset_top = -15.0
+offset_right = 31.0
+offset_bottom = -11.0
+theme_override_styles/background = SubResource("StyleBoxFlat_iuf4a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ulevp")
+show_percentage = false
+
+[node name="DragAndDrop" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("4_iuf4a")
+target = NodePath("..")
+
+[node name="VelocityBasedRotation" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("5_ulevp")
+target = NodePath("../Visuals/Skin")
+lerp_seconds = 0.3
+max_rotation_degrees = 42
+
+[node name="OutlineHighlighter" type="Node" parent="." node_paths=PackedStringArray("visuals")]
+script = ExtResource("7_kakeo")
+visuals = NodePath("../Visuals")
+outline_color = Color(1, 1, 1, 1)
+outline_thickness = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
