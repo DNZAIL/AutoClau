@@ -15,6 +15,10 @@ run/main_scene="uid://c24ar1xrntfsq"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://ld2nr3nbywvo"
 
+[autoload]
+
+CursorHandler="*res://Miscellaneous/cursor_handler.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -23,7 +27,6 @@ window/size/window_width_override=1300
 window/size/window_height_override=750
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
-mouse_cursor/custom_image="uid://cw5mdolai4cqa"
 
 [dotnet]
 

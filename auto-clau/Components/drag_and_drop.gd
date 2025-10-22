@@ -30,10 +30,14 @@ func _end_dragging() -> void:
 	dragging = false
 	target.remove_from_group("dragging")
 	target.z_index = 0
+	
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 func _cancel_dragging() -> void:
 	_end_dragging()
 	drag_canceled.emit(starting_position)
+	
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 func _start_dragging() -> void:
 	dragging = true
@@ -42,6 +46,8 @@ func _start_dragging() -> void:
 	target.z_index = 99
 	offset = target.global_position - target.get_global_mouse_position()
 	drag_started.emit()
+	
+	Input.set_default_cursor_shape(Input.CURSOR_DRAG)
 
 func _drop() -> void:
 	_end_dragging()
