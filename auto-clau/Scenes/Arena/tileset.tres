@@ -1,14 +1,14 @@
 [gd_resource type="TileSet" load_steps=13 format=3 uid="uid://bfvv8t8ntwxe3"]
 
-[ext_resource type="Texture2D" uid="uid://b016tpq3o166n" path="res://Assets/Cainos - Pixel Art Top Down/TX Tileset Grass.png" id="1_it8vs"]
-[ext_resource type="Texture2D" uid="uid://dbfvetot2cmkv" path="res://Assets/Cainos - Pixel Art Top Down/TX Tileset Wall.png" id="2_qm5fe"]
-[ext_resource type="Texture2D" uid="uid://21s572kbyiik" path="res://Assets/Cainos - Pixel Art Top Down/TX Tileset Stone Ground.png" id="4_dwrm5"]
-[ext_resource type="Texture2D" uid="uid://353ciavnkokw" path="res://Assets/Seth - 32rogues/tiles.png" id="4_k2oe6"]
-[ext_resource type="Texture2D" uid="uid://dnavwjyqsijqt" path="res://Assets/Cainos - Pixel Art Top Down/TX Shadow.png" id="5_s6ij6"]
-[ext_resource type="Texture2D" uid="uid://b07w6iccra5c3" path="res://Assets/Cainos - Pixel Art Top Down/TX Props.png" id="6_dwrm5"]
+[ext_resource type="Texture2D" uid="uid://b016tpq3o166n" path="res://Assets/Sprites/Cainos - Pixel Art Top Down/TX Tileset Grass.png" id="1_s6ij6"]
+[ext_resource type="Texture2D" uid="uid://dbfvetot2cmkv" path="res://Assets/Sprites/Cainos - Pixel Art Top Down/TX Tileset Wall.png" id="2_dwrm5"]
+[ext_resource type="Texture2D" uid="uid://21s572kbyiik" path="res://Assets/Sprites/Cainos - Pixel Art Top Down/TX Tileset Stone Ground.png" id="3_k2oe6"]
+[ext_resource type="Texture2D" uid="uid://b07w6iccra5c3" path="res://Assets/Sprites/Cainos - Pixel Art Top Down/TX Props.png" id="4_vl5cf"]
+[ext_resource type="Texture2D" uid="uid://dnavwjyqsijqt" path="res://Assets/Sprites/Cainos - Pixel Art Top Down/TX Shadow.png" id="5_1d4wo"]
+[ext_resource type="Texture2D" uid="uid://353ciavnkokw" path="res://Assets/Sprites/Seth - 32rogues/tiles.png" id="6_s6ij6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fsjwy"]
-texture = ExtResource("1_it8vs")
+texture = ExtResource("1_s6ij6")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -76,7 +76,7 @@ texture_region_size = Vector2i(32, 32)
 7:7/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ibrr"]
-texture = ExtResource("2_qm5fe")
+texture = ExtResource("2_dwrm5")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 2:1/0 = 0
@@ -141,7 +141,7 @@ texture_region_size = Vector2i(32, 32)
 5:10/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xt8pn"]
-texture = ExtResource("4_dwrm5")
+texture = ExtResource("3_k2oe6")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -195,7 +195,7 @@ texture_region_size = Vector2i(32, 32)
 7:7/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vl5cf"]
-texture = ExtResource("6_dwrm5")
+texture = ExtResource("4_vl5cf")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 3:0/0 = 0
@@ -304,7 +304,7 @@ texture_region_size = Vector2i(32, 32)
 9:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k2oe6"]
-texture = ExtResource("5_s6ij6")
+texture = ExtResource("5_1d4wo")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 1:0/0/modulate = Color(1, 1, 1, 0.49019608)
@@ -544,7 +544,7 @@ texture_region_size = Vector2i(32, 32)
 5:15/0/modulate = Color(1, 1, 1, 0.49019608)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1d4wo"]
-texture = ExtResource("4_k2oe6")
+texture = ExtResource("6_s6ij6")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0

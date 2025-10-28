@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://ddid5vounvpsk"]
 
 [ext_resource type="Script" uid="uid://bd73vovopsj14" path="res://Scenes/Unit/unit.gd" id="1_15sed"]
-[ext_resource type="Texture2D" uid="uid://db71ophumcoqc" path="res://Assets/Seth - 32rogues/rogues.png" id="1_hgpyh"]
-[ext_resource type="Resource" uid="uid://duj2clcilclm2" path="res://Data/Units/jonathan.tres" id="2_ladk0"]
+[ext_resource type="Texture2D" uid="uid://db71ophumcoqc" path="res://Assets/Sprites/Seth - 32rogues/rogues.png" id="1_hgpyh"]
+[ext_resource type="Resource" uid="uid://duj2clcilclm2" path="res://Data/Units/jon.tres" id="2_ladk0"]
 [ext_resource type="Shader" uid="uid://dfl2b4b1uotte" path="res://Shaders/2d_outline.gdshader" id="3_jbdwb"]
 [ext_resource type="Script" uid="uid://6a22bdg6gbab" path="res://Components/drag_and_drop.gd" id="4_iuf4a"]
 [ext_resource type="Script" uid="uid://cvvibncp23kdx" path="res://Components/velocity_based_rotation.gd" id="5_ulevp"]

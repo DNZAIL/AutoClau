@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c24ar1xrntfsq"]
+[gd_scene load_steps=16 format=4 uid="uid://c24ar1xrntfsq"]
 
 [ext_resource type="Script" uid="uid://wbiqhaf0o1tr" path="res://Scenes/Arena/arena.gd" id="1_6o3nl"]
 [ext_resource type="TileSet" uid="uid://bfvv8t8ntwxe3" path="res://Scenes/Arena/tileset.tres" id="1_b8w6q"]
@@ -7,9 +7,11 @@
 [ext_resource type="Script" uid="uid://e6i8rfqus4m0" path="res://Components/unit_grid.gd" id="4_rm3sm"]
 [ext_resource type="PackedScene" uid="uid://ddid5vounvpsk" path="res://Scenes/Unit/unit.tscn" id="5_t7yvt"]
 [ext_resource type="Script" uid="uid://c4f0ibc50ws68" path="res://Components/tile_highlighter.gd" id="6_qnyor"]
-[ext_resource type="Resource" uid="uid://dlccxxicjn045" path="res://Data/Units/raleigh.tres" id="8_0ibrr"]
 [ext_resource type="Script" uid="uid://b4c24a1iyria8" path="res://Components/unit_mover.gd" id="8_fsjwy"]
+[ext_resource type="Resource" uid="uid://bxtdyobb6b7u0" path="res://Data/Units/jon_test.tres" id="8_pa1tb"]
 [ext_resource type="Script" uid="uid://x4c07nllq0c6" path="res://Components/unit_spawner.gd" id="10_vgwd8"]
+[ext_resource type="PackedScene" uid="uid://btseski0dwdhl" path="res://Scenes/Sell Portal/sell_portal.tscn" id="11_xt8pn"]
+[ext_resource type="PackedScene" uid="uid://dbv3pnax14ks8" path="res://Scenes/Shop/shop.tscn" id="13_nmnh2"]
 
 [sub_resource type="Curve" id="Curve_6o3nl"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16894978, 1), 0.0, 0.0, 0, 0, Vector2(0.8310502, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -102,12 +104,6 @@ metadata/_edit_lock_ = true
 [node name="Highlight" type="TileMapLayer" parent="Bench"]
 tile_set = ExtResource("1_b8w6q")
 
-[node name="Unit" parent="Bench" instance=ExtResource("5_t7yvt")]
-
-[node name="Unit2" parent="Bench" instance=ExtResource("5_t7yvt")]
-position = Vector2(64, 0)
-stats = ExtResource("8_0ibrr")
-
 [node name="BenchUnitGrid" type="Node2D" parent="Bench"]
 script = ExtResource("4_rm3sm")
 size = Vector2i(10, 1)
@@ -119,6 +115,13 @@ play_area = NodePath("..")
 highlight_layer = NodePath("../Highlight")
 tile = Vector2i(3, 0)
 
+[node name="Unit" parent="Bench" instance=ExtResource("5_t7yvt")]
+position = Vector2(0, -160)
+stats = ExtResource("8_pa1tb")
+
+[node name="SellPortal" parent="." instance=ExtResource("11_xt8pn")]
+position = Vector2(80, 288)
+
 [node name="UnitMover" type="Node" parent="." node_paths=PackedStringArray("play_areas")]
 script = ExtResource("8_fsjwy")
 play_areas = [NodePath("../GameArea"), NodePath("../Bench")]
@@ -127,3 +130,8 @@ play_areas = [NodePath("../GameArea"), NodePath("../Bench")]
 script = ExtResource("10_vgwd8")
 bench = NodePath("../Bench")
 game_area = NodePath("../GameArea")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Shop" parent="UI" instance=ExtResource("13_nmnh2")]
+unique_name_in_owner = true
