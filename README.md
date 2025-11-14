@@ -8,14 +8,14 @@ Autobattler heavily based upon and inspired by [GodotGameLab's Autobattler Tutor
 [simple icons 32x32 by terapizza](https://terapizza.itch.io/simple-icons) <br>
 [RPG Elemental Spells by Amolker](https://amolker.itch.io/rpg-elemental-spells-32x32) <br>
 [SFX from Freesounds.org](https://freesound.org/) <br>
-<ul>
-  <li>[Switch_on_3 by Dragon20C](https://freesound.org/people/Dragon20C/sounds/807464/)</li>
-  <li>[menu click 1 by Tissman](https://freesound.org/people/Tissman/sounds/531852/)</li>
-  <li>[Swish 1 by ihitokage](https://freesound.org/people/ihitokage/sounds/395338/)</li>
-  <li>[crumple-06 by drooler](https://freesound.org/people/drooler/sounds/508597/)</li>
-  <li>[Punch Wood Table by Blazewasbored](https://freesound.org/people/Blazewasbored/sounds/569495/)</li>
-</ul> 
-<br>
+
+* [Switch_on_3 by Dragon20C](https://freesound.org/people/Dragon20C/sounds/807464/)
+* [menu click 1 by Tissman](https://freesound.org/people/Tissman/sounds/531852/)
+* [Swish 1 by ihitokage](https://freesound.org/people/ihitokage/sounds/395338/)
+* [crumple-06 by drooler](https://freesound.org/people/drooler/sounds/508597/)
+* [Punch Wood Table by Blazewasbored](https://freesound.org/people/Blazewasbored/sounds/569495/)
+
+&nbsp;
 "Midnight Tale" [Kevin MacLeod](incompetech.com) <br>
 Licensed under Creative Commons: [By Attribution 4.0 License](http://creativecommons.org/licenses/by/4.0/) <br>
 
