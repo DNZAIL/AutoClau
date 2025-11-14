@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://btseski0dwdhl"]
+
+[ext_resource type="Script" uid="uid://dpswt1nvxotdn" path="res://Scenes/Arena/Sell Portal/sell_portal.gd" id="1_3ngnv"]
+[ext_resource type="Material" uid="uid://26iiygoku328" path="res://Shaders/2d_outline_shader.tres" id="1_bcvc4"]
+[ext_resource type="Texture2D" uid="uid://353ciavnkokw" path="res://Assets/Sprites/Seth - 32rogues/tiles.png" id="2_7mc5g"]
+[ext_resource type="Resource" uid="uid://dsvaxl00xvl2a" path="res://Data/Unit Pool/unit_pool.tres" id="2_ncgpv"]
+[ext_resource type="Resource" uid="uid://fct1wsqdouox" path="res://Data/Player/player_stats.tres" id="3_538g5"]
+[ext_resource type="Script" uid="uid://cf4jwlo8cx5un" path="res://Components/outline_highlighter.gd" id="3_eukyc"]
+[ext_resource type="AudioStream" uid="uid://bcywr6ibrxaik" path="res://Assets/Sounds/SFX/508597__drooler__crumple-06.ogg" id="4_niips"]
+[ext_resource type="FontFile" uid="uid://dadji6i6dmerl" path="res://Assets/Font/Good Old DOS.ttf" id="5_3ngnv"]
+[ext_resource type="Texture2D" uid="uid://bpaeqmvmgf3dk" path="res://Assets/Sprites/gold.png" id="5_eukyc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ngnv"]
+radius = 24.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mc5g"]
+font = ExtResource("5_3ngnv")
+font_size = 13
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.627451)
+
+[node name="SellPortal" type="Area2D"]
+script = ExtResource("1_3ngnv")
+unit_pool = ExtResource("2_ncgpv")
+player_stats = ExtResource("3_538g5")
+sell_sound = ExtResource("4_niips")
+
+[node name="Visuals" type="CanvasGroup" parent="."]
+material = ExtResource("1_bcvc4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+position = Vector2(16, 16)
+texture = ExtResource("2_7mc5g")
+region_enabled = true
+region_rect = Rect2(224, 512, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("CircleShape2D_3ngnv")
+
+[node name="OutlineHighlighter" type="Node" parent="." node_paths=PackedStringArray("visuals")]
+script = ExtResource("3_eukyc")
+visuals = NodePath("../Visuals")
+outline_color = Color(1, 0.72421664, 0.8228357, 1)
+outline_thickness = 2
+
+[node name="Label" type="Label" parent="."]
+offset_top = 36.0
+offset_right = 36.0
+offset_bottom = 50.0
+text = "Sell"
+label_settings = SubResource("LabelSettings_7mc5g")
+
+[node name="Gold" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_top = 52.0
+offset_right = 35.0
+offset_bottom = 65.0
+alignment = 1
+
+[node name="GoldLabel" type="Label" parent="Gold"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "99"
+label_settings = SubResource("LabelSettings_7mc5g")
+
+[node name="TextureRect" type="TextureRect" parent="Gold"]
+custom_minimum_size = Vector2(9, 0)
+layout_mode = 2
+texture = ExtResource("5_eukyc")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

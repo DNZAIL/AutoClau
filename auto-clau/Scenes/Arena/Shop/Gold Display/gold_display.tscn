@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmxgqgkj85ejv"]
+
+[ext_resource type="Script" uid="uid://o5b75hbfqbqu" path="res://Scenes/Arena/Shop/Gold Display/gold_display.gd" id="1_utsr3"]
+[ext_resource type="Resource" uid="uid://fct1wsqdouox" path="res://Data/Player/player_stats.tres" id="2_dt841"]
+[ext_resource type="Texture2D" uid="uid://bpaeqmvmgf3dk" path="res://Assets/Sprites/gold.png" id="3_dt841"]
+[ext_resource type="FontFile" uid="uid://dadji6i6dmerl" path="res://Assets/Font/Good Old DOS.ttf" id="3_w18xc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dt841"]
+font = ExtResource("3_w18xc")
+font_size = 13
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.627451)
+
+[node name="GoldDisplay" type="HBoxContainer"]
+offset_right = 28.0
+offset_bottom = 18.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+script = ExtResource("1_utsr3")
+player_stats = ExtResource("2_dt841")
+
+[node name="Gold" type="Label" parent="."]
+layout_mode = 2
+text = "99"
+label_settings = SubResource("LabelSettings_dt841")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+texture = ExtResource("3_dt841")
+expand_mode = 1
+stretch_mode = 5

@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbv3pnax14ks8"]
+
+[ext_resource type="PackedScene" uid="uid://dmxgqgkj85ejv" path="res://Scenes/Arena/Shop/Gold Display/gold_display.tscn" id="1_274ew"]
+[ext_resource type="Script" uid="uid://bemmt0bsbs77u" path="res://Scenes/Arena/Shop/shop.gd" id="1_rjc2l"]
+[ext_resource type="Resource" uid="uid://fct1wsqdouox" path="res://Data/Player/player_stats.tres" id="2_fobo1"]
+[ext_resource type="Resource" uid="uid://dsvaxl00xvl2a" path="res://Data/Unit Pool/unit_pool.tres" id="2_oqg8q"]
+[ext_resource type="PackedScene" uid="uid://n1fss2nr1as8" path="res://Scenes/Arena/Shop/Unit Card/unit_card.tscn" id="2_rjc2l"]
+[ext_resource type="PackedScene" uid="uid://dvjgs8sebhrma" path="res://Scenes/Arena/Shop/XP Button/xp_button.tscn" id="3_fobo1"]
+[ext_resource type="PackedScene" uid="uid://b1fkf38gys0l5" path="res://Scenes/Arena/Shop/Reroll Button/reroll_button.tscn" id="4_oqg8q"]
+[ext_resource type="PackedScene" uid="uid://dmkcxvdvj7mnq" path="res://Scenes/Arena/Shop/XP Tracker/xp_tracker.tscn" id="5_kcc5r"]
+
+[node name="Shop" type="VBoxContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -124.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 351.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+theme_override_constants/separation = 10
+script = ExtResource("1_rjc2l")
+unit_pool = ExtResource("2_oqg8q")
+player_stats = ExtResource("2_fobo1")
+
+[node name="Gold & Shop" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="GoldDisplay" parent="Gold & Shop" instance=ExtResource("1_274ew")]
+layout_mode = 2
+
+[node name="ShopCards" type="VBoxContainer" parent="Gold & Shop"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UnitCard" parent="Gold & Shop/ShopCards" instance=ExtResource("2_rjc2l")]
+layout_mode = 2
+
+[node name="UnitCard2" parent="Gold & Shop/ShopCards" instance=ExtResource("2_rjc2l")]
+layout_mode = 2
+
+[node name="UnitCard3" parent="Gold & Shop/ShopCards" instance=ExtResource("2_rjc2l")]
+layout_mode = 2
+
+[node name="UnitCard4" parent="Gold & Shop/ShopCards" instance=ExtResource("2_rjc2l")]
+layout_mode = 2
+
+[node name="UnitCard5" parent="Gold & Shop/ShopCards" instance=ExtResource("2_rjc2l")]
+layout_mode = 2
+
+[node name="EXP & Level" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="XPButton" parent="EXP & Level" instance=ExtResource("3_fobo1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="Reroll & XP" type="VBoxContainer" parent="EXP & Level"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="RerollButton" parent="EXP & Level/Reroll & XP" instance=ExtResource("4_oqg8q")]
+layout_mode = 2
+
+[node name="XPTracker" parent="EXP & Level/Reroll & XP" instance=ExtResource("5_kcc5r")]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[connection signal="pressed" from="EXP & Level/Reroll & XP/RerollButton" to="." method="_on_reroll_button_pressed"]

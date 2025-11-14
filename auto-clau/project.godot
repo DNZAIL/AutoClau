@@ -15,9 +15,15 @@ run/main_scene="uid://c24ar1xrntfsq"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://ld2nr3nbywvo"
 
+[audio]
+
+buses/default_bus_layout="res://Scenes/Audio Player/default_bus_layout.tres"
+
 [autoload]
 
 CursorHandler="*res://Miscellaneous/cursor_handler.gd"
+MusicPlayer="*res://Scenes/Audio Player/music_player.tscn"
+SFXPlayer="*res://Scenes/Audio Player/sfx_player.tscn"
 
 [display]
 

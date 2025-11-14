@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Trait" load_steps=4 format=3 uid="uid://be5u4poofdx4i"]
+
+[ext_resource type="Texture2D" uid="uid://dudk73rsenjds" path="res://Assets/Icons/simple-icons.png" id="1_awwed"]
+[ext_resource type="Script" uid="uid://olns7s0uxlh" path="res://Data/Traits/trait.gd" id="1_kg445"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxev5"]
+atlas = ExtResource("1_awwed")
+region = Rect2(4, 112, 32, 32)
+
+[resource]
+script = ExtResource("1_kg445")
+name = "Woodland"
+icon = SubResource("AtlasTexture_sxev5")
+levels = 2
+unit_requirements = Array[int]([1, 4])
+unit_modifier = Array[PackedScene]([null, null])
+metadata/_custom_type_script = "uid://olns7s0uxlh"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Trait" load_steps=4 format=3 uid="uid://cge2aqx672v"]
+
+[ext_resource type="Texture2D" uid="uid://dudk73rsenjds" path="res://Assets/Icons/simple-icons.png" id="1_5h13n"]
+[ext_resource type="Script" uid="uid://olns7s0uxlh" path="res://Data/Traits/trait.gd" id="2_e4odj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36tre"]
+atlas = ExtResource("1_5h13n")
+region = Rect2(148, 4, 32, 32)
+
+[resource]
+script = ExtResource("2_e4odj")
+name = "Warden"
+icon = SubResource("AtlasTexture_36tre")
+levels = 3
+unit_requirements = Array[int]([2, 4, 6])
+unit_modifier = Array[PackedScene]([null, null, null])
+metadata/_custom_type_script = "uid://olns7s0uxlh"

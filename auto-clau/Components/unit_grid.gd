@@ -1,7 +1,7 @@
 class_name UnitGrid
 extends Node
 
-signal unit_grid_change
+signal unit_grid_changed
 
 @export var size: Vector2i
 
@@ -15,7 +15,7 @@ func _ready() -> void:
 func add_unit(tile: Vector2i, unit = Node) -> void:
 	units[tile] = unit
 	unit.tree_exited.connect(_on_unit_tree_exited.bind(unit, tile))
-	unit_grid_change.emit()
+	unit_grid_changed.emit()
 
 func remove_unit(tile: Vector2i) -> void:
 	var unit := units[tile] as Node
@@ -25,7 +25,7 @@ func remove_unit(tile: Vector2i) -> void:
 	
 	unit.tree_exited.disconnect(_on_unit_tree_exited)
 	units[tile] = null
-	unit_grid_change.emit()
+	unit_grid_changed.emit()
 
 func is_tile_occupied(tile: Vector2i) -> bool:
 	return units[tile] != null
@@ -53,4 +53,4 @@ func get_all_units() -> Array[Unit]:
 func _on_unit_tree_exited(unit: Unit, tile: Vector2i) -> void:
 	if unit.is_queued_for_deletion():
 		units[tile] = null
-		unit_grid_change.emit()
+		unit_grid_changed.emit()

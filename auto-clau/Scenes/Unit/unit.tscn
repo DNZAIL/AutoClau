@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddid5vounvpsk"]
+[gd_scene load_steps=16 format=3 uid="uid://ddid5vounvpsk"]
 
 [ext_resource type="Script" uid="uid://bd73vovopsj14" path="res://Scenes/Unit/unit.gd" id="1_15sed"]
 [ext_resource type="Texture2D" uid="uid://db71ophumcoqc" path="res://Assets/Sprites/Seth - 32rogues/rogues.png" id="1_hgpyh"]
 [ext_resource type="Resource" uid="uid://duj2clcilclm2" path="res://Data/Units/jon.tres" id="2_ladk0"]
 [ext_resource type="Shader" uid="uid://dfl2b4b1uotte" path="res://Shaders/2d_outline.gdshader" id="3_jbdwb"]
 [ext_resource type="Script" uid="uid://6a22bdg6gbab" path="res://Components/drag_and_drop.gd" id="4_iuf4a"]
+[ext_resource type="PackedScene" uid="uid://wop72xk6yhga" path="res://Scenes/Unit/Tier Icon/tier_icon.tscn" id="5_2itl1"]
 [ext_resource type="Script" uid="uid://cvvibncp23kdx" path="res://Components/velocity_based_rotation.gd" id="5_ulevp"]
 [ext_resource type="Script" uid="uid://cf4jwlo8cx5un" path="res://Components/outline_highlighter.gd" id="7_kakeo"]
+[ext_resource type="Script" uid="uid://djcplkvy3hq3r" path="res://Components/unit_animations.gd" id="9_uodik"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jbdwb"]
 resource_local_to_scene = true
@@ -78,6 +80,11 @@ theme_override_styles/background = SubResource("StyleBoxFlat_iuf4a")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ulevp")
 show_percentage = false
 
+[node name="TierIcon" parent="." instance=ExtResource("5_2itl1")]
+offset_top = -13.0
+offset_bottom = -3.0
+stats = ExtResource("2_ladk0")
+
 [node name="DragAndDrop" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("4_iuf4a")
 target = NodePath("..")
@@ -93,6 +100,11 @@ script = ExtResource("7_kakeo")
 visuals = NodePath("../Visuals")
 outline_color = Color(1, 1, 1, 1)
 outline_thickness = 2
+
+[node name="UnitAnimations" type="Node" parent="." node_paths=PackedStringArray("unit")]
+script = ExtResource("9_uodik")
+unit = NodePath("..")
+metadata/_custom_type_script = "uid://djcplkvy3hq3r"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

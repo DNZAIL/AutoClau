@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://deviwt5vaw75f"]
+
+[ext_resource type="Script" uid="uid://ub133tmvitlu" path="res://Scenes/Arena/Trait UI/trait_ui.gd" id="1_cc1ob"]
+[ext_resource type="Texture2D" uid="uid://dgse8ecsf7pn4" path="res://Assets/Sprites/trait_background.png" id="2_hpya5"]
+[ext_resource type="Resource" uid="uid://be5u4poofdx4i" path="res://Data/Traits/woodland.tres" id="2_xfuxb"]
+[ext_resource type="Texture2D" uid="uid://dudk73rsenjds" path="res://Assets/Icons/simple-icons.png" id="3_xfuxb"]
+[ext_resource type="FontFile" uid="uid://wycjy6exhyc3" path="res://Assets/Font/Abaddon Bold.ttf" id="4_e576x"]
+[ext_resource type="FontFile" uid="uid://g4a4i5h0lq0g" path="res://Assets/Font/m5x7.ttf" id="5_kdhd6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuae1"]
+atlas = ExtResource("3_xfuxb")
+region = Rect2(4, 4, 32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2jyik"]
+font = ExtResource("4_e576x")
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.60784316)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t52e4"]
+font = ExtResource("5_kdhd6")
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="TraitUI" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cc1ob")
+trait_data = ExtResource("2_xfuxb")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TraitIconBackground" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_hpya5")
+stretch_mode = 5
+
+[node name="TraitIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/TraitIconBackground"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_vuae1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="ActiveUnitsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_2jyik")
+
+[node name="TraitLevelLabels" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+clip_contents = false
+custom_minimum_size = Vector2(28, 16)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.6666667, 0.6666667, 0.6666667, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_kdhd6")
+bbcode_enabled = true
+text = "2/4/6"
+scroll_active = false
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+
+[node name="TraitLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Warden"
+label_settings = SubResource("LabelSettings_t52e4")

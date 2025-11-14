@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://dlccxxicjn045"]
+[gd_resource type="Resource" script_class="UnitStats" load_steps=5 format=3 uid="uid://dlccxxicjn045"]
 
 [ext_resource type="Script" uid="uid://kxgj454eb330" path="res://Data/Units/unit_stats.gd" id="1_6co7a"]
+[ext_resource type="Script" uid="uid://olns7s0uxlh" path="res://Data/Traits/trait.gd" id="2_d6ov8"]
+[ext_resource type="Resource" uid="uid://be5u4poofdx4i" path="res://Data/Traits/woodland.tres" id="3_kgycd"]
+[ext_resource type="Resource" uid="uid://dm0gtlqmhh2ui" path="res://Data/Traits/fighter.tres" id="4_2k5t0"]
 
 [resource]
 script = ExtResource("1_6co7a")
 name = "Raleigh"
 rarity = 1
 gold_cost = 2
+traits = Array[ExtResource("2_d6ov8")]([ExtResource("3_kgycd"), ExtResource("4_2k5t0")])
 skin_coordinates = Vector2i(1, 3)
 metadata/_custom_type_script = "uid://kxgj454eb330"

@@ -1,17 +1,22 @@
-[gd_scene load_steps=16 format=4 uid="uid://c24ar1xrntfsq"]
+[gd_scene load_steps=21 format=4 uid="uid://c24ar1xrntfsq"]
 
 [ext_resource type="Script" uid="uid://wbiqhaf0o1tr" path="res://Scenes/Arena/arena.gd" id="1_6o3nl"]
 [ext_resource type="TileSet" uid="uid://bfvv8t8ntwxe3" path="res://Scenes/Arena/tileset.tres" id="1_b8w6q"]
 [ext_resource type="Texture2D" uid="uid://b4pm02s4n8v2c" path="res://Assets/Kronbits - Basic Particles/shape_star_2.png" id="2_fp5lk"]
+[ext_resource type="AudioStream" uid="uid://4aqy76x7ign4" path="res://Assets/Sounds/Music/Midnight Tale.mp3" id="2_lrmtw"]
 [ext_resource type="Script" uid="uid://bud583jfxrt68" path="res://Components/play_area.gd" id="4_11not"]
 [ext_resource type="Script" uid="uid://e6i8rfqus4m0" path="res://Components/unit_grid.gd" id="4_rm3sm"]
-[ext_resource type="PackedScene" uid="uid://ddid5vounvpsk" path="res://Scenes/Unit/unit.tscn" id="5_t7yvt"]
 [ext_resource type="Script" uid="uid://c4f0ibc50ws68" path="res://Components/tile_highlighter.gd" id="6_qnyor"]
 [ext_resource type="Script" uid="uid://b4c24a1iyria8" path="res://Components/unit_mover.gd" id="8_fsjwy"]
-[ext_resource type="Resource" uid="uid://bxtdyobb6b7u0" path="res://Data/Units/jon_test.tres" id="8_pa1tb"]
+[ext_resource type="AudioStream" uid="uid://dkjwbugcaj6wx" path="res://Assets/Sounds/SFX/569495__blazewasbored__punch-wood-table.ogg" id="9_wbi20"]
 [ext_resource type="Script" uid="uid://x4c07nllq0c6" path="res://Components/unit_spawner.gd" id="10_vgwd8"]
-[ext_resource type="PackedScene" uid="uid://btseski0dwdhl" path="res://Scenes/Sell Portal/sell_portal.tscn" id="11_xt8pn"]
-[ext_resource type="PackedScene" uid="uid://dbv3pnax14ks8" path="res://Scenes/Shop/shop.tscn" id="13_nmnh2"]
+[ext_resource type="AudioStream" uid="uid://cuw8mhndhxa4h" path="res://Assets/Sounds/SFX/395338__ihitokage__swish-1.ogg" id="11_vgng5"]
+[ext_resource type="PackedScene" uid="uid://btseski0dwdhl" path="res://Scenes/Arena/Sell Portal/sell_portal.tscn" id="11_xt8pn"]
+[ext_resource type="Script" uid="uid://dqjmqvc7wy5ok" path="res://Components/unit_combiner.gd" id="12_nmnh2"]
+[ext_resource type="PackedScene" uid="uid://deuna6eb2qqjm" path="res://Scenes/Arena/Team Size UI/team_size_ui.tscn" id="12_pa1tb"]
+[ext_resource type="Resource" uid="uid://fct1wsqdouox" path="res://Data/Player/player_stats.tres" id="13_87vak"]
+[ext_resource type="PackedScene" uid="uid://dbv3pnax14ks8" path="res://Scenes/Arena/Shop/shop.tscn" id="13_nmnh2"]
+[ext_resource type="PackedScene" uid="uid://cgtnheeqply2e" path="res://Scenes/Arena/Traits/traits.tscn" id="14_87vak"]
 
 [sub_resource type="Curve" id="Curve_6o3nl"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16894978, 1), 0.0, 0.0, 0, 0, Vector2(0.8310502, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -37,6 +42,7 @@ color = Color(1, 1, 1, 0.3529412)
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_6o3nl")
+arena_music_stream = ExtResource("2_lrmtw")
 metadata/_edit_lock_ = true
 
 [node name="Visuals" type="Node2D" parent="."]
@@ -115,23 +121,45 @@ play_area = NodePath("..")
 highlight_layer = NodePath("../Highlight")
 tile = Vector2i(3, 0)
 
-[node name="Unit" parent="Bench" instance=ExtResource("5_t7yvt")]
-position = Vector2(0, -160)
-stats = ExtResource("8_pa1tb")
-
 [node name="SellPortal" parent="." instance=ExtResource("11_xt8pn")]
 position = Vector2(80, 288)
 
 [node name="UnitMover" type="Node" parent="." node_paths=PackedStringArray("play_areas")]
 script = ExtResource("8_fsjwy")
 play_areas = [NodePath("../GameArea"), NodePath("../Bench")]
+unit_place_sound = ExtResource("9_wbi20")
 
 [node name="UnitSpawner" type="Node" parent="." node_paths=PackedStringArray("bench", "game_area")]
 script = ExtResource("10_vgwd8")
 bench = NodePath("../Bench")
 game_area = NodePath("../GameArea")
 
+[node name="UnitCombiner" type="Node" parent="." node_paths=PackedStringArray("buffer_timer")]
+script = ExtResource("12_nmnh2")
+buffer_timer = NodePath("BufferTimer")
+combine_sound = ExtResource("11_vgng5")
+metadata/_custom_type_script = "uid://dqjmqvc7wy5ok"
+
+[node name="BufferTimer" type="Timer" parent="UnitCombiner"]
+wait_time = 0.25
+one_shot = true
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Shop" parent="UI" instance=ExtResource("13_nmnh2")]
 unique_name_in_owner = true
+
+[node name="TeamSizeUI" parent="UI" node_paths=PackedStringArray("arena_grid") instance=ExtResource("12_pa1tb")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.5
+offset_top = 4.0
+offset_right = 24.5
+offset_bottom = 21.0
+grow_horizontal = 2
+player_stats = ExtResource("13_87vak")
+arena_grid = NodePath("../../GameArea/ArenaUnitGrid")
+
+[node name="Traits" parent="UI" node_paths=PackedStringArray("arena_grid") instance=ExtResource("14_87vak")]
+arena_grid = NodePath("../../GameArea/ArenaUnitGrid")

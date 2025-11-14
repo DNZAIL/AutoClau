@@ -1,12 +1,15 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://bcnrbu7xbwcag"]
+[gd_resource type="Resource" script_class="UnitStats" load_steps=5 format=3 uid="uid://bcnrbu7xbwcag"]
 
 [ext_resource type="Script" uid="uid://kxgj454eb330" path="res://Data/Units/unit_stats.gd" id="1_5hcli"]
+[ext_resource type="Script" uid="uid://olns7s0uxlh" path="res://Data/Traits/trait.gd" id="2_l8g7m"]
+[ext_resource type="Resource" uid="uid://be5u4poofdx4i" path="res://Data/Traits/woodland.tres" id="3_xpub0"]
+[ext_resource type="Resource" uid="uid://8270rnu6nl74" path="res://Data/Traits/magician.tres" id="4_bxxrr"]
 
 [resource]
 script = ExtResource("1_5hcli")
 name = "Sylvia"
 rarity = 1
 gold_cost = 2
-tier = 2
+traits = Array[ExtResource("2_l8g7m")]([ExtResource("3_xpub0"), ExtResource("4_bxxrr")])
 skin_coordinates = Vector2i(2, 4)
 metadata/_custom_type_script = "uid://kxgj454eb330"

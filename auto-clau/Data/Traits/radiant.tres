@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Trait" load_steps=4 format=3 uid="uid://bc6ue4kdouyqs"]
+
+[ext_resource type="Texture2D" uid="uid://dudk73rsenjds" path="res://Assets/Icons/simple-icons.png" id="1_br36j"]
+[ext_resource type="Script" uid="uid://olns7s0uxlh" path="res://Data/Traits/trait.gd" id="1_v6yha"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br36j"]
+atlas = ExtResource("1_br36j")
+region = Rect2(40, 184, 32, 32)
+
+[resource]
+script = ExtResource("1_v6yha")
+name = "Radiant"
+icon = SubResource("AtlasTexture_br36j")
+levels = 3
+unit_requirements = Array[int]([3, 5, 7])
+unit_modifier = Array[PackedScene]([null, null, null])
+metadata/_custom_type_script = "uid://olns7s0uxlh"
