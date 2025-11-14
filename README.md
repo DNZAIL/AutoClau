@@ -15,7 +15,6 @@ Autobattler heavily based upon and inspired by [GodotGameLab's Autobattler Tutor
 * [crumple-06 by drooler](https://freesound.org/people/drooler/sounds/508597/)
 * [Punch Wood Table by Blazewasbored](https://freesound.org/people/Blazewasbored/sounds/569495/)
 
-&nbsp;
-"Midnight Tale" [Kevin MacLeod](incompetech.com) <br>
+"Midnight Tale" by [Kevin MacLeod](incompetech.com) <br>
 Licensed under Creative Commons: [By Attribution 4.0 License](http://creativecommons.org/licenses/by/4.0/) <br>
 
